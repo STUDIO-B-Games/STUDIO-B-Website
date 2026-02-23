@@ -1,0 +1,10 @@
+export { default as About } from "./About";
+export { default as Footer } from "./Footer";
+export { default as Games } from "./Games";
+export { default as Header } from "./Header";
+export { default as HeroSlider } from "./HeroSlider";
+export { default as News } from "./News";
+export { default as Newsletter } from "./Newsletter";
+export { default as SectionHeader } from "./SectionHeader";
+export { default as Team } from "./Team";
+export { default as Wrapper } from "./Wrapper";
