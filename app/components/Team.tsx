@@ -1,48 +1,36 @@
 import Image from "next/image";
 import { SectionHeader, Wrapper } from "./index";
-import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
+import { socialIcons } from "../constants";
 
 export default function Team() {
   const teamMembers = [
     {
-      name: "Sarah Mitchell",
+      name: "Dylan Baker",
       role: "CEO & Creative Director",
-      image: "https://randomuser.me/api/portraits/women/1.jpg",
+      image: "https://randomuser.me/api/portraits/men/10.jpg",
       bio: "Visionary leader with 20 years of experience in game development and a passion for storytelling.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-      },
+      social: [
+        {
+          name: "LinkedIn",
+          url: "#",
+        },
+        { name: "Twitter", url: "#" },
+        { name: "GitHub", url: "#" },
+      ],
     },
     {
-      name: "Marcus Chen",
+      name: "Alex Baker",
       role: "Lead Game Designer",
-      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      image: "https://randomuser.me/api/portraits/men/1.jpg",
       bio: "Award-winning designer known for creating immersive gameplay experiences and innovative mechanics.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-      },
-    },
-    {
-      name: "Elena Rodriguez",
-      role: "Art Director",
-      image: "https://randomuser.me/api/portraits/women/44.jpg",
-      bio: "Creative artist with a unique vision for bringing game worlds to life through stunning visuals.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-      },
-    },
-    {
-      name: "James Patterson",
-      role: "Technical Director",
-      image: "https://randomuser.me/api/portraits/men/22.jpg",
-      bio: "Expert engineer specializing in cutting-edge game engines and performance optimization.",
-      social: {
-        linkedin: "#",
-        github: "#",
-      },
+      social: [
+        {
+          name: "LinkedIn",
+          url: "#",
+        },
+        { name: "Twitter", url: "#" },
+        { name: "GitHub", url: "#" },
+      ],
     },
   ];
 
@@ -65,54 +53,40 @@ export default function Team() {
                 src={member.image}
                 alt={member.name}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-cover aspect-square transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             {/* Content */}
-            <div className="p-5 relative flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-sm text-blue-400 mb-3">{member.role}</p>
-                <p className="text-sm text-gray-400 leading-relaxed">
-                  {member.bio}
-                </p>
+            <div className="py-2.5 px-3.5 md:px-5 md:py-4 relative flex flex-col justify-between gap-3">
+              <div className="flex flex-col gap-1">
+                <h3 className="text-xl font-bold text-white">{member.name}</h3>
+                <p className="text-sm text-indigo-300">{member.role}</p>
               </div>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                {member.bio}
+              </p>
               {/* Social links overlay */}
-              <div className="flex gap-3 mt-4">
-                {member.social.linkedin && (
-                  <a
-                    href={member.social.linkedin}
-                    className="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaLinkedin className="w-4 h-4 text-white" />
-                  </a>
-                )}
-                {member.social.twitter && (
-                  <a
-                    href={member.social.twitter}
-                    className="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaTwitter className="w-4 h-4 text-white" />
-                  </a>
-                )}
-                {member.social.github && (
-                  <a
-                    href={member.social.github}
-                    className="bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub className="w-4 h-4 text-white" />
-                  </a>
-                )}
+              <div className="flex gap-3">
+                {member.social
+                  .filter(
+                    (social) =>
+                      social.url !== null &&
+                      social.url !== "" &&
+                      social.url !== undefined,
+                  )
+                  .map((social, index) => (
+                    <a
+                      href={social.url}
+                      className="backdrop-blur-sm p-2 rounded-full hover:bg-white/20 transition-colors text-gray-300"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={index}
+                    >
+                      <span>{socialIcons[social.name]}</span>
+                    </a>
+                  ))}
               </div>
             </div>
           </div>

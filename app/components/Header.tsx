@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { HeaderLinks } from "../data";
+import logo from "../assets/logo.png";
+import Image from "next/image";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,7 +81,13 @@ export default function Header() {
             href="/"
             className="text-xl font-bold tracking-wider md:static absolute left-1/2 -translate-x-1/2 md:translate-x-0"
           >
-            STUDIO
+            <div className="flex items-center">
+              <Image
+                src={logo}
+                alt="Studio Logo"
+                className=" object-cover w-24.5"
+              />
+            </div>
           </Link>
 
           {/* Desktop centered links */}

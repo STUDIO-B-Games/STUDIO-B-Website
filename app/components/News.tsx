@@ -41,49 +41,54 @@ export default function News({ news }: { news: any[] }) {
       />
 
       {/* News grid displaying latest articles with images, titles, dates, tags, and summaries */}
-      <div className="flex flex-col sm:flex-row gap-6 pb-4 scrollbar-hide">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-2 md:gap-4 items-stretch sm:justify-center">
         {news.map((item, index) => (
           <div
             key={index}
-            className="flex sm:flex-col w-full rounded-xl overflow-hidden bg-white/5 border border-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            className="flex flex-col overflow-hidden rounded-xl bg-white/15 border border-white/20 hover:border-white/25 transition-all duration-300 hover:-translate-y-1 cursor-pointer w-full sm:w-1/3"
           >
-            <div className="relative sm:w-full min-w-2/5 max-w-2/5 sm:max-w-full sm:h-60 md:h-72 lg:h-96">
+            <div className="relative w-full aspect-16/6 sm:aspect-video overflow-hidden">
               <Image
                 src={item.photo}
                 alt={item.title}
                 fill
-                className="object-cover"
+                className="object-cover aspect-video"
               />
+              {/* Tags */}
+              <div className="absolute top-1 left-1 flex flex-wrap gap-1 md:gap-2">
+                {item.tags.map((tag: any, index: number) => (
+                  <div
+                    key={index}
+                    className="border border-white/25 rounded-full px-1.5 py-0.5 sm:px-3 sm:py-1 text-xs font-semibold text-white/90 bg-black/30 backdrop-blur-sm whitespace-nowrap"
+                  >
+                    {tag}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="flex flex-col gap-4 sm:gap-0 p-4 h-full justify-between">
-              {/* Info */}
-              <div className="">
-                {item.game && (
-                  <h4 className="text-xs font-black text-gray-300 uppercase">
-                    {item.game}
-                  </h4>
-                )}
-                <h3 className="text-lg md:text-xl text-gray-100 font-semibold mb-2 line-clamp-2">
-                  {item.title}
-                </h3>
+            <div className="flex flex-col flex-1 gap-2 sm:gap-4 p-4 justify-between">
+              {/* Game, title, and summary */}
+              <div className="flex flex-col gap-2">
+                {/* Game and title */}
+                <div className="flex flex-col gap-1">
+                  {item.game && (
+                    <h4 className="text-xs font-black text-gray-300 uppercase">
+                      {item.game}
+                    </h4>
+                  )}
+                  <h3 className="text-lg md:text-xl text-gray-100 font-semibold line-clamp-2">
+                    {item.title}
+                  </h3>
+                </div>
+                {/* Summary */}
                 <p className="text-sm text-gray-300 line-clamp-3">
                   {item.summary}
                 </p>
               </div>
 
-              {/* Date and Tags */}
-              <div className="sm:-mt-20 md:-mt-26 lg:-mt-36 flex flex-col gap-2">
-                <div className="flex flex-wrap gap-2">
-                  {item.tags.map((tag: any, index: number) => (
-                    <div
-                      key={index}
-                      className="border border-white/50 rounded-full px-3 py-1 text-xs"
-                    >
-                      {tag}
-                    </div>
-                  ))}
-                </div>
+              {/* Date */}
+              <div className="flex flex-col gap-2">
                 <p className="text-xs md:text-sm text-gray-400">
                   {getRelativeTime(item.publishedDate)}
                 </p>

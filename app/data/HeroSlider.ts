@@ -12,7 +12,7 @@ import { Slide } from "../types/data/HeroSlider";
 const HeroSliderData: Slide[] = [
   {
     title: FO4_logo,
-    subtitle: "Trailer 2",
+    subtitle: "",
     background: {
       src: FO4,
       alt: "Fallout 4 Background",
@@ -33,7 +33,7 @@ const HeroSliderData: Slide[] = [
   },
   {
     title: GTA6_logo,
-    subtitle: "Trailer 2",
+    subtitle: "",
     background: {
       src: GTA6,
       alt: "Grand Theft Auto VI Background",
@@ -47,14 +47,14 @@ const HeroSliderData: Slide[] = [
         font: "#000000",
       },
       secondary: {
-        label: "Explore Leonida",
+        label: "Learn More",
         color: "#FFFFFF",
       },
     },
   },
   {
     title: GTAO_logo,
-    subtitle: "A Safehouse in the Hills Now Available",
+    subtitle: "",
     background: {
       src: GTAO,
       alt: "Grand Theft Auto Online Background",
@@ -75,7 +75,7 @@ const HeroSliderData: Slide[] = [
   },
   {
     title: GTA5_logo,
-    subtitle: "Experience GTAv Enhanced: The Best Version on PC",
+    subtitle: "",
     background: {
       src: GTA5,
       alt: "Grand Theft Auto V Background",

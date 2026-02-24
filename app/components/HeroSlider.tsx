@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Slide } from "../types/data/HeroSlider";
-import { FaArrowRight, FaPause, FaPlay } from "react-icons/fa6";
+import { FaArrowRight, FaPlay } from "react-icons/fa6";
+import { Button, SliderControls } from "./UI";
 
 export default function HeroSlider({
   data,
@@ -59,7 +60,7 @@ export default function HeroSlider({
   }, [currentSlide.accentColor, onAccentColorChange]);
 
   return (
-    <div className="h-screen">
+    <div className="h-[calc(100vh-80px)] md:h-screen">
       <div className="h-[90%] relative overflow-hidden bg-transparent">
         {/* Top gradient overlay - darkens top of image */}
         <div
@@ -111,7 +112,7 @@ export default function HeroSlider({
         </div>
         <div className="w-full flex justify-center">
           {/* Bottom gradient overlay - fades to transparent to show background color */}
-          <div className="absolute w-full h-3/7 bottom-0 z-90 flex flex-col md:flex-row items-center md:items-end justify-end md:justify-between pb-10 px-16 gap-10 max-w-350">
+          <div className="absolute w-full h-3/7 bottom-0 z-90 flex flex-col md:flex-row items-center md:items-end justify-end md:justify-between pb-10 px-16 gap-4 md:gap-10 max-w-350">
             <div className="relative w-full md:w-auto">
               {/* Current text - sliding up from bottom */}
               <div
@@ -138,37 +139,34 @@ export default function HeroSlider({
                   <p className="text-lg">{currentSlide.subtitle}</p>
                 </div>
                 {/* Buttons */}
-                <div className="flex gap-5 justify-center md:justify-start">
+                <div className="flex flex-col md:flex-row gap-2 md:gap-5 justify-center md:justify-start">
                   {currentSlide?.buttons?.primary && (
-                    <button
-                      style={{
-                        backgroundColor: currentSlide.buttons.primary.color,
-                        color: currentSlide.buttons.primary.font,
+                    <Button
+                      color={{
+                        background: currentSlide.buttons.primary.color,
+                        text: currentSlide.buttons.primary.font,
                       }}
-                      className="rounded-full px-6 py-3.5 font-bold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+                      icon={{ icon: <FaPlay className="size-4" /> }}
                     >
-                      {currentSlide?.buttons?.primary.type === "watch" && (
-                        <FaPlay className="size-4" />
-                      )}
                       {currentSlide.buttons.primary.label}
-                    </button>
+                    </Button>
                   )}
                   {currentSlide?.buttons?.secondary && (
-                    <button
-                      style={{
-                        color: currentSlide.buttons.secondary.color,
-                        borderColor: currentSlide.buttons.secondary.color,
+                    <Button
+                      type="secondary"
+                      color={{ text: "#FFFFFF", background: "#FFFFFF" }}
+                      icon={{
+                        icon: <FaArrowRight className="size-4" />,
+                        position: "right",
                       }}
-                      className="rounded-full px-6 py-3.5 font-bold text-sm border-[0.5px] hover:bg-white/10 transition-colors  flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                     >
                       {currentSlide.buttons.secondary.label}
-                      <FaArrowRight className="size-4" />
-                    </button>
+                    </Button>
                   )}
                 </div>
               </div>
             </div>
-            <Slider
+            <SliderControls
               slides={data}
               activeSlide={activeSlide}
               setActiveSlide={handleSlideChange}
@@ -178,50 +176,6 @@ export default function HeroSlider({
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function Slider({
-  slides,
-  activeSlide,
-  setActiveSlide,
-  isPaused,
-  setIsPaused,
-}: {
-  slides: any[];
-  activeSlide: number;
-  setActiveSlide: (index: number) => void;
-  isPaused: boolean;
-  setIsPaused: (paused: boolean) => void;
-}) {
-  return (
-    <div className="flex gap-5 md:gap-3 items-center">
-      {/* Slide indicators */}
-      {slides.map((_, index) => (
-        <div
-          key={index}
-          className={`h-3 rounded-full overflow-hidden bg-white/25 cursor-pointer transition-all duration-700 ease-in-out ${activeSlide === index ? (isPaused ? "w-3 bg-white/75" : "w-30 md:w-20") : "w-10 md:w-3"}`}
-          onClick={() => setActiveSlide(index)}
-        >
-          {activeSlide === index && !isPaused && (
-            <div className="h-full bg-white/75 animate-slide-progress" />
-          )}
-        </div>
-      ))}
-
-      {/* Play/Pause button */}
-      <button
-        onClick={() => setIsPaused(!isPaused)}
-        className="text-white/75 hover:text-white cursor-pointer hover:bg-white/30 rounded-full p-1.5 transition-all duration-300"
-        aria-label={isPaused ? "Play" : "Pause"}
-      >
-        {isPaused ? (
-          <FaPlay className="size-4" />
-        ) : (
-          <FaPause className="size-4" />
-        )}
-      </button>
     </div>
   );
 }
