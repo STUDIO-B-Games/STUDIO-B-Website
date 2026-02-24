@@ -143,12 +143,12 @@ export default function Header() {
       >
         <div className="h-full overflow-y-auto">
           {/* Header with close button */}
-          <div className="flex items-center justify-between px-8 py-6 border-b border-white/10">
+          <div className="flex items-center justify-between px-8 py-[21.5px] border-b border-white/10">
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
               <Image
                 src={logo}
                 alt="Studio Logo"
-                className="select-none pointer-events-none object-cover w-24.5"
+                className="select-none pointer-events-none object-cover w-32"
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />
