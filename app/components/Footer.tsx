@@ -7,7 +7,7 @@ import {
   FaDiscord,
   FaTwitch,
 } from "react-icons/fa";
-import logo from "../assets/logo-2.png";
+import logo from "../assets/logo-white.svg";
 import Image from "next/image";
 
 export default function Footer() {
@@ -56,7 +56,9 @@ export default function Footer() {
               <Image
                 src={logo}
                 alt="Studio Logo"
-                className=" object-cover w-32"
+                className="select-none object-cover w-32 pointer-events-none"
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </Link>
             <p className="text-gray-400 text-sm mb-6 max-w-sm">

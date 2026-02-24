@@ -52,7 +52,9 @@ export default function News({ news }: { news: any[] }) {
                 src={item.photo}
                 alt={item.title}
                 fill
-                className="object-cover aspect-video"
+                className="object-cover aspect-video select-none pointer-events-none"
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
               {/* Tags */}
               <div className="absolute top-1 left-1 flex flex-wrap gap-1 md:gap-2">

@@ -40,7 +40,9 @@ export default function Team() {
                 src={member.image}
                 alt={member.name}
                 fill
-                className="object-cover transition-all duration-500"
+                className="object-cover transition-all duration-500 select-none pointer-events-none rounded-full"
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </div>
 

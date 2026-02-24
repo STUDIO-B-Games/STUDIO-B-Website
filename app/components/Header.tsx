@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { HeaderLinks } from "../data";
 import { socialIcons } from "../constants";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import Image from "next/image";
 import { Button } from "./UI";
 import { FaArrowRight } from "react-icons/fa6";
@@ -86,7 +86,9 @@ export default function Header() {
               <Image
                 src={logo}
                 alt="Studio Logo"
-                className=" object-cover w-24.5"
+                className="select-none object-cover w-24.5 pointer-events-none"
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </div>
           </Link>
@@ -146,7 +148,9 @@ export default function Header() {
               <Image
                 src={logo}
                 alt="Studio Logo"
-                className="object-cover w-24.5"
+                className="select-none pointer-events-none object-cover w-24.5"
+                draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </Link>
             <button
