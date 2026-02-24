@@ -7,7 +7,7 @@ import {
   FaDiscord,
   FaTwitch,
 } from "react-icons/fa";
-import logo from "../assets/logo-white.svg";
+import logo from "../assets/logo-cutout-border-box.svg";
 import Image from "next/image";
 
 export default function Footer() {

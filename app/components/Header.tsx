@@ -86,7 +86,7 @@ export default function Header() {
               <Image
                 src={logo}
                 alt="Studio Logo"
-                className="select-none object-cover w-24.5 pointer-events-none"
+                className="select-none object-cover w-32 pointer-events-none"
                 draggable={false}
                 onContextMenu={(e) => e.preventDefault()}
               />
