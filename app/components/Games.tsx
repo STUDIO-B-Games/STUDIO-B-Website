@@ -59,7 +59,7 @@ export default function Games() {
       gridClass: "col-span-1 lg:row-span-1 sm:col-span-2",
     },
     {
-      title: "Indiana Jones and the Great Circle",
+      title: "Indiana Jones and the Great Jerk",
       genre: "Action, Adventure",
       image: Indiana,
       platforms: ["Windows", "Playstation", "Xbox", "Mac"],
@@ -102,15 +102,12 @@ export default function Games() {
             <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
 
             {/* Content overlay */}
-            <div className="absolute inset-0 p-2 sm:p-4 md:p-6 flex flex-col justify-between">
-              <div className="flex justify-end">
+            <div className="absolute inset-0 p-2 sm:p-4 flex flex-col justify-between">
+              <div className="flex justify-between">
                 {/* Status badge */}
                 <span className="text-xs font-semibold text-white/90 bg-black/30 backdrop-blur-sm px-2.5 md:px-3 py-1 rounded-full w-fit whitespace-nowrap">
                   {game.status}
                 </span>
-              </div>
-              {/* Game title and genre */}
-              <div className="flex flex-col gap-1 w-full justify-between">
                 {/* Platform icons */}
                 <div className="flex items-center gap-1.5 md:gap-2">
                   {game.platforms.slice(0, 4).map((platform, idx) => (
@@ -124,7 +121,9 @@ export default function Games() {
                     </span>
                   )}
                 </div>
-                {/* Game title */}
+              </div>
+              {/* Game title and genre */}
+              <div className="flex flex-col gap-1 w-full justify-between">
                 <h3 className="text-white line-clamp-2 text-xl md:text-2xl font-bold drop-shadow-lg">
                   {game.title}
                 </h3>

@@ -5,22 +5,22 @@ import { FaGlobeAmericas } from "react-icons/fa";
 export default function About() {
   const stats = [
     {
-      icon: <FaGamepad className="w-8 h-8" />,
+      icon: <FaGamepad className="size-6" />,
       value: "50+",
       label: "Games Published",
     },
     {
-      icon: <FaUsers className="w-8 h-8" />,
+      icon: <FaUsers className="size-6" />,
       value: "100M+",
       label: "Active Players",
     },
     {
-      icon: <FaGlobeAmericas className="w-8 h-8" />,
+      icon: <FaGlobeAmericas className="size-6" />,
       value: "150+",
       label: "Countries",
     },
     {
-      icon: <FaTrophy className="w-8 h-8" />,
+      icon: <FaTrophy className="size-6" />,
       value: "200+",
       label: "Industry Awards",
     },
@@ -89,10 +89,10 @@ export default function About() {
               <div className="text-white/80 group-hover:text-white transition-colors mb-2 sm:mb-4">
                 {stat.icon}
               </div>
-              <div className="text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
+              <div className="text-xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
                 {stat.value}
               </div>
-              <div className="text-sm md:text-base text-gray-400 group-hover:text-gray-300 transition-colors">
+              <div className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
                 {stat.label}
               </div>
             </div>

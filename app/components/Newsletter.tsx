@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Wrapper from "./Wrapper";
+import { Button } from "./UI";
+import { FaArrowRight } from "react-icons/fa6";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     if (email) {
       setIsSubmitted(true);
@@ -41,12 +43,16 @@ export default function Newsletter() {
               required
               className="flex-1 border border-white/10 rounded-full px-6 py-3.5 text-sm placeholder-gray-400 focus:outline-none focus:border-white/25 transition-colors"
             />
-            <button
-              type="submit"
-              className="bg-white/90 text-black font-semibold rounded-full px-8 py-3.5 text-sm hover:opacity-90 transition-opacity cursor-pointer"
+            <Button
+              icon={{
+                icon: <FaArrowRight className="size-4" />,
+                position: "right",
+                animate: true,
+              }}
+              className="bg-white/90 text-black"
             >
               Subscribe
-            </button>
+            </Button>
           </form>
 
           {isSubmitted && (

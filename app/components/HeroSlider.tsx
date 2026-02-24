@@ -158,6 +158,7 @@ export default function HeroSlider({
                       icon={{
                         icon: <FaArrowRight className="size-4" />,
                         position: "right",
+                        animate: true,
                       }}
                     >
                       {currentSlide.buttons.secondary.label}

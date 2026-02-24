@@ -5,12 +5,13 @@ export default function Button({
   children,
   className = "",
   color = {
-    background: "#FFFFFF",
-    text: "#000000",
+    background: "",
+    text: "",
   },
   icon = {
     icon: null,
     position: "left",
+    animate: false,
   },
   size = "default",
   type = "primary",
@@ -25,16 +26,16 @@ export default function Button({
   icon?: {
     icon: React.ReactNode;
     position?: "left" | "right";
+    animate?: boolean;
   };
   size?: "small" | "default";
   type?: "primary" | "secondary" | "text";
 }) {
   const buttonStyles = {
-    primary:
-      "rounded-full hover:opacity-90 transition-opacity flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap",
-    secondary:
-      "rounded-full border-[0.5px] hover:bg-white/10 transition-colors flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap",
-    text: "px-0 py-1 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap",
+    base: "group transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap",
+    primary: "rounded-full hover:opacity-90",
+    secondary: "rounded-full border-[0.5px] hover:bg-white/10",
+    text: "px-0 py-1",
   };
 
   const buttonSizes = {
@@ -45,9 +46,10 @@ export default function Button({
     <button
       className={cn(
         className,
-        size === "small" && buttonSizes.small,
-        size === "default" && buttonSizes.default,
+        buttonStyles.base,
         buttonStyles[type],
+        size === "small" && type !== "text" && buttonSizes.small,
+        size === "default" && buttonSizes.default,
       )}
       style={
         type === "primary"
@@ -58,9 +60,27 @@ export default function Button({
       }
       {...props}
     >
-      {icon?.position === "left" || (!icon?.position && icon.icon)}
+      {(icon?.position === "left" || !icon?.position) && icon.icon && (
+        <div
+          className={cn(
+            icon.animate &&
+              "group-hover:-translate-x-1 transition-all duration-300",
+          )}
+        >
+          {icon.icon}
+        </div>
+      )}
       {children}
-      {icon?.position === "right" && icon.icon}
+      {icon?.position === "right" && icon.icon && (
+        <div
+          className={cn(
+            icon.animate &&
+              "group-hover:translate-x-1 transition-all duration-300",
+          )}
+        >
+          {icon.icon}
+        </div>
+      )}
     </button>
   );
 }

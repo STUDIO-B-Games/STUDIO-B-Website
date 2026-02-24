@@ -18,13 +18,14 @@ export default function SectionHeader({
         {title}
       </h2>
       {action && (
-        <Link href={action.link}>
+        <Link href="#">
           <Button
             className="font-medium"
             color={{ text: "#FFFFFF", background: "#FFFFFF" }}
             icon={{
               icon: <FaArrowRight className="size-4" />,
               position: "right",
+              animate: true,
             }}
             size="small"
             type="text"
